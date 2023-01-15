@@ -44,4 +44,27 @@ public class TaskService {
         taskRepository.deleteById(taskId);
     }
 
+    public List<Task> listAll(){
+        return (List<Task>) taskRepository.findAll();
+    }
+
+    public void save(Task task) {
+        taskRepository.save(task);
+    }
+
+    public Task get(Long id) throws UserNotFoundException {
+        Optional<Task> result = taskRepository.findById(id);
+        if (result.isPresent()){
+            return result.get();
+        }
+        throw new UserNotFoundException("Could not find any users with ID" + id);
+    }
+
+    public void delete(Long id) throws UserNotFoundException {
+        Long count = taskRepository.countById(id);
+        if (count == null || count == 0){
+            throw new UserNotFoundException("Could not find any users with ID" + id);
+        }
+        taskRepository.deleteById(id);
+    }
 }

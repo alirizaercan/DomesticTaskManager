@@ -21,4 +21,6 @@ public interface TaskRepository extends JpaRepository<Task, Long>{
      @Query("SELECT s FROM Task s WHERE s.title = ?1")
     Optional<Task> findTaskByTitle(String title);
 
+     public Long countById(Long id);
+
 }

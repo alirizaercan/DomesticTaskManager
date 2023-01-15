@@ -55,9 +55,17 @@ public class Task {
             columnDefinition = "TEXT"
     )
     private String description;
-    @Column
+    @Column(
+            name = "start_date",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private LocalDateTime startDate;
-    @Column
+    @Column(
+            name = "stop_date",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private LocalDateTime stopDate;
     @Column(
             name = "type",
